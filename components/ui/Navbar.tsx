@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useTheme } from "next-themes";
+import { SidebarTrigger } from "./sidebar";
 import { Sun, LogOut, Moon, Settings, User } from "lucide-react";
 import { AvatarImage, Avatar, AvatarFallback } from "./avatar";
 import { Button } from "./button";
@@ -17,9 +18,9 @@ import {
 const Navbar = () => {
   const { setTheme } = useTheme();
   return (
-    <nav className="flex items-center justify-between px-4">
+    <nav className="flex items-center justify-between px-4 py-[0.4rem] bg-gray-800">
       {/* left */}
-      Collapse button
+      <SidebarTrigger/>
       {/* right */}
       <div className="flex items-center gap-4">
         <Link href="/">Dashboard</Link>
@@ -48,7 +49,7 @@ const Navbar = () => {
         <DropdownMenu>
           <DropdownMenuTrigger>
             <Avatar>
-              <AvatarImage src="/avatar.png" alt="User Avatar" />
+              <AvatarImage src="#" alt="User Avatar" />
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
           </DropdownMenuTrigger>
@@ -65,7 +66,7 @@ const Navbar = () => {
             </DropdownMenuItem>
             <DropdownMenuItem variant="destructive">
               <LogOut className="h-[1.2rem] w-[1.2rem] mr-2" />
-              Log Out
+              Sign Out
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

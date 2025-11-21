@@ -28,7 +28,7 @@ import {
   DropdownMenuTrigger,
   DropdownMenuContent,
 } from "./dropdown-menu";
-// import Image from "next/image";
+import Image from "next/image";
 
 const AppSidebar = () => {
   const contentArr = [
@@ -45,8 +45,8 @@ const AppSidebar = () => {
           <SidebarMenuItem>
             <SidebarMenuButton asChild>
               <Link href="/">
-              {/* <Image src="" alt="" /> */}
-              <span>Fuzzy Trends</span>
+                <Image src="#" alt="Logo" />
+                <span>Fuzzy Trends</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
