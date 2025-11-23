@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useTheme } from "next-themes";
-import { SidebarTrigger } from "./sidebar";
+import { SidebarTrigger /*useSidebar*/ } from "./sidebar";
 import { Sun, LogOut, Moon, Settings, User } from "lucide-react";
 import { AvatarImage, Avatar, AvatarFallback } from "./avatar";
 import { Button } from "./button";
@@ -17,10 +17,12 @@ import {
 
 const Navbar = () => {
   const { setTheme } = useTheme();
+  // const { toggleSidebar } = useSidebar();
   return (
-    <nav className="flex items-center justify-between px-4 py-[0.4rem] bg-gray-800">
+    <nav className="flex items-center justify-between px-4 py-[0.4rem]">
       {/* left */}
-      <SidebarTrigger/>
+      <SidebarTrigger />
+      {/* <Button variant="outline" onClick={toggleSidebar}>Toggle</Button> */}
       {/* right */}
       <div className="flex items-center gap-4">
         <Link href="/">Dashboard</Link>
