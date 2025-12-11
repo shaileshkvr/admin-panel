@@ -107,7 +107,7 @@ const AppSidebar = () => {
                   <SidebarMenuItem>
                     <SidebarMenuButton asChild>
                       <Link href="/#">
-                        Add Projects <Plus />
+                        <Plus /> Add Projects
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
