@@ -47,7 +47,7 @@ const AppPieChart = () => {
 
   return (
     <div className="">
-      <h1>Some Shi</h1>
+      <h1 className="text-lg font-medium mb-6">Browser Users</h1>
       <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
         <PieChart>
           <ChartTooltip
