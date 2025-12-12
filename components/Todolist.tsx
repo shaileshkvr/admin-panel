@@ -1,51 +1,80 @@
+"use client";
+
+import { useState } from "react";
 import { Card } from "./ui/card";
 import { Label } from "./ui/label";
 import { Checkbox } from "./ui/checkbox";
 import { ScrollArea } from "./ui/scroll-area";
-
-const todoItems: {
-  id: number;
-  title: string;
-  description: string;
-  checked: boolean;
-}[] = [
-  {
-    id: 1,
-    title: "Complete Admin Panel",
-    description: "Replicate a admin look-alike panel for management purposes",
-    checked: false,
-  },
-  {
-    id: 2,
-    title: "Learn Advance Tailwind",
-    description: "Learn Tailwind CSS while using shadcn components",
-    checked: false,
-  },
-  {
-    id: 3,
-    title: "Fuzzy-Trends frontend",
-    description: "Create a frontend for fuzzy-trends project",
-    checked: false,
-  },
-  {
-    id: 4,
-    title: "Fuzzy-Trends backend",
-    description: "Create a backend for fuzzy-trends project using fastify",
-    checked: false,
-  },
-  {
-    id: 5,
-    title: "Fuzzy-Trends backend",
-    description: "Learn how to work with fastify and integrate with frontend",
-    checked: false,
-  },
-];
+import { Button } from "./ui/button";
+import { CalendarIcon } from "lucide-react";
+import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
+import { format } from "date-fns";
+import { Calendar } from "./ui/calendar";
 
 const Todolist = () => {
+  const [todoItems, setTodoItems] = useState<
+    {
+      id: number;
+      title: string;
+      description: string;
+      checked: boolean;
+    }[]
+  >([
+    {
+      id: 1,
+      title: "Complete Admin Panel",
+      description: "Replicate a admin look-alike panel for management purposes",
+      checked: false,
+    },
+    {
+      id: 2,
+      title: "Learn Advance Tailwind",
+      description: "Learn Tailwind CSS while using shadcn components",
+      checked: false,
+    },
+    {
+      id: 3,
+      title: "Fuzzy-Trends frontend",
+      description: "Create a frontend for fuzzy-trends project",
+      checked: false,
+    },
+    {
+      id: 4,
+      title: "Fuzzy-Trends backend",
+      description: "Create a backend for fuzzy-trends project using fastify",
+      checked: false,
+    },
+    {
+      id: 5,
+      title: "Fuzzy-Trends backend",
+      description: "Learn how to work with fastify and integrate with frontend",
+      checked: false,
+    },
+  ]);
+  const [date, setDate] = useState<Date | undefined>(new Date());
+  const [open, setOpen] = useState<boolean>(false);
   return (
-    <div className="">
-      Calender
-      {/* List */}
+    <div>
+      <h1 className="text-lg font-medium mb-6">Todos</h1>
+      {/* Calender */}
+      <Popover open={open} onOpenChange={setOpen}>
+        <PopoverTrigger asChild>
+          <Button variant="outline" className="w-full">
+            <CalendarIcon />
+            {date ? format(date, "PPP") : <span>Select Date</span>}
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="p-0 w-auto">
+          <Calendar
+            mode="single"
+            selected={date}
+            onSelect={(date) => {
+              setDate(date);
+              setOpen(false);
+            }}
+          />
+        </PopoverContent>
+      </Popover>
       <ScrollArea className="max-h-[400px] mt-4 overflow-y-auto">
         {todoItems.map((item) => (
           <Card key={item.id} className="mb-2 p-0 border-0">
@@ -55,6 +84,7 @@ const Todolist = () => {
             >
               <Checkbox
                 id={`item-${item.id}`}
+                // onCheckedChange={}
                 // checked={item.checked}
                 className="data-[state=checked]:border-green-600 data-[state=checked]:bg-green-600 data-[state=checked]:text-white dark:data-[state=checked]:border-green-700 dark:data-[state=checked]:bg-green-700"
               />
