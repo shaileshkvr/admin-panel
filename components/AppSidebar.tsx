@@ -26,6 +26,7 @@ import {
   Plus,
   Projector,
   ChevronDown,
+  LucideIcon,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -42,7 +43,12 @@ import {
 // import Image from "next/image";
 
 const AppSidebar = () => {
-  const contentArr = [
+  const contentArr: {
+    id: number;
+    title: string;
+    url: string;
+    icon: LucideIcon;
+  }[] = [
     { id: 1, title: "Home", url: "#", icon: User },
     { id: 2, title: "Inbox", url: "#", icon: Inbox },
     { id: 3, title: "Calendar", url: "#", icon: Calendar },
