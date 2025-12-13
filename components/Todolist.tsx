@@ -53,6 +53,15 @@ const Todolist = () => {
   ]);
   const [date, setDate] = useState<Date | undefined>(new Date());
   const [open, setOpen] = useState<boolean>(false);
+
+  const toggleTodoItem = (id: number) => {
+    setTodoItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === id ? { ...item, checked: !item.checked } : item
+      )
+    );
+  };
+
   return (
     <div>
       <h1 className="text-lg font-medium mb-6">Todos</h1>
@@ -84,8 +93,8 @@ const Todolist = () => {
             >
               <Checkbox
                 id={`item-${item.id}`}
-                // onCheckedChange={}
-                // checked={item.checked}
+                checked={item.checked}
+                onCheckedChange={() => toggleTodoItem(item.id)}
                 className="data-[state=checked]:border-green-600 data-[state=checked]:bg-green-600 data-[state=checked]:text-white dark:data-[state=checked]:border-green-700 dark:data-[state=checked]:bg-green-700"
               />
               <div className="grid gap-1.5">
