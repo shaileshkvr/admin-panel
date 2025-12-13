@@ -49,7 +49,7 @@ const AppSidebar = () => {
     url: string;
     icon: LucideIcon;
   }[] = [
-    { id: 1, title: "Home", url: "#", icon: User },
+    { id: 1, title: "Home", url: "/users", icon: User },
     { id: 2, title: "Inbox", url: "#", icon: Inbox },
     { id: 3, title: "Calendar", url: "#", icon: Calendar },
     { id: 4, title: "Search", url: "#", icon: Search },
