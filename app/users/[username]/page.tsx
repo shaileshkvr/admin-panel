@@ -8,6 +8,7 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { Button } from "@/components/ui/button";
 
 import {
   HoverCard,
@@ -15,6 +16,7 @@ import {
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
 import { Progress } from "@/components/ui/progress";
+import { Sheet, SheetTrigger } from "@/components/ui/sheet";
 import {
   BadgeCheckIcon,
   CandyIcon,
@@ -115,7 +117,12 @@ const SingleUserPage = () => {
           <div className="bg-primary-foreground p-4 rounded-lg">
             <div className="flex items-center justify-between">
               <h1 className="text-lg font-semibold">User Information</h1>
-              <EditUser />
+              <Sheet>
+                <SheetTrigger asChild>
+                  <Button>Edit User</Button>
+                </SheetTrigger>
+                <EditUser />
+              </Sheet>
             </div>
             {/* User Details */}
             <div className="space-y-3 mt-4">
@@ -143,7 +150,7 @@ const SingleUserPage = () => {
               </div>
               <div className="flex items-center gap-2">
                 <span className="font-bold">Role:</span>
-                <Badge variant="outline" className="text-sm bg-blue-500/40">
+                <Badge variant="outline" className="text-sm bg-blue-500/20">
                   Admin
                 </Badge>
               </div>
