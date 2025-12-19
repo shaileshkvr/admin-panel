@@ -27,6 +27,13 @@ import {
   FieldError,
   FieldGroup,
 } from "@/components/ui/field";
+import {
+  MailIcon,
+  MapPinIcon,
+  PhoneIcon,
+  UserIcon,
+  UsersIcon,
+} from "lucide-react";
 
 const formSchema = z.object({
   username: z
@@ -45,7 +52,8 @@ const EditUser = () => {
     defaultValues: {
       username: "ShaileshV",
       email: "shailesh.example@gmail.com",
-      location: "Bangalore",
+      phone: "",
+      location: "Bangalore, India",
       role: "user",
     },
   });
@@ -70,7 +78,10 @@ const EditUser = () => {
             control={form.control}
             render={({ field, fieldState }) => (
               <Field data-invalid={fieldState.invalid}>
-                <FieldLabel htmlFor={field.name}>Username</FieldLabel>
+                <FieldLabel htmlFor={field.name}>
+                  <UserIcon size={16} />
+                  Username
+                </FieldLabel>
                 <Input
                   {...field}
                   id={field.name}
@@ -80,6 +91,83 @@ const EditUser = () => {
               </Field>
             )}
           />
+          <Controller
+            name="email"
+            control={form.control}
+            render={({ field, fieldState }) => (
+              <Field data-invalid={fieldState.invalid}>
+                <FieldLabel htmlFor={field.name}>
+                  <MailIcon size={16} />
+                  Email
+                </FieldLabel>
+                <Input
+                  {...field}
+                  id={field.name}
+                  aria-invalid={fieldState.invalid}
+                />
+                {fieldState.error && <FieldError errors={[fieldState.error]} />}
+              </Field>
+            )}
+          />
+          <Controller
+            name="phone"
+            control={form.control}
+            render={({ field, fieldState }) => (
+              <Field data-invalid={fieldState.invalid}>
+                <FieldLabel htmlFor={field.name}>
+                  <PhoneIcon size={16} /> Phone
+                </FieldLabel>
+                <Input
+                  {...field}
+                  id={field.name}
+                  aria-invalid={fieldState.invalid}
+                  placeholder="9876543210"
+                />
+                {fieldState.error && <FieldError errors={[fieldState.error]} />}
+              </Field>
+            )}
+          />
+          <Controller
+            name="location"
+            control={form.control}
+            render={({ field, fieldState }) => (
+              <Field data-invalid={fieldState.invalid}>
+                <FieldLabel htmlFor={field.name}>
+                  <MapPinIcon size={16} />
+                  Location
+                </FieldLabel>
+                <Input
+                  {...field}
+                  id={field.name}
+                  aria-invalid={fieldState.invalid}
+                />
+                {fieldState.error && <FieldError errors={[fieldState.error]} />}
+              </Field>
+            )}
+          />
+          <Controller
+            name="role"
+            control={form.control}
+            render={({ field, fieldState }) => (
+              <Field data-invalid={fieldState.invalid}>
+                <FieldLabel htmlFor={field.name}>
+                  <UsersIcon size={16} />
+                  Role
+                </FieldLabel>
+                <Select defaultValue="user">
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="user">User</SelectItem>
+                    <SelectItem value="admin">Admin</SelectItem>
+                  </SelectContent>
+                </Select>
+                {fieldState.error && <FieldError errors={[fieldState.error]} />}
+              </Field>
+            )}
+          />
+
           <Button>Save</Button>
         </FieldGroup>
       </form>
