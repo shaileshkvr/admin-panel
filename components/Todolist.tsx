@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card } from "./ui/card";
 import { Label } from "./ui/label";
 import { Checkbox } from "./ui/checkbox";
@@ -51,8 +51,15 @@ const Todolist = () => {
       checked: false,
     },
   ]);
-  const [date, setDate] = useState<Date | undefined>(new Date());
+  const [date, setDate] = useState<Date | undefined>();
   const [open, setOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDate(new Date());
+    }, 0);
+    return () => clearTimeout(timer);
+  }, []);
 
   const toggleTodoItem = (id: number) => {
     setTodoItems((prevItems) =>
