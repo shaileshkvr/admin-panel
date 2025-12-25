@@ -182,7 +182,10 @@ const EditUser = () => {
                   Role
                 </FieldLabel>
                 <Select value={field.value} onValueChange={field.onChange}>
-                  <SelectTrigger>
+                  <SelectTrigger
+                    id={field.name}
+                    aria-invalid={fieldState.invalid}
+                  >
                     <SelectValue placeholder="Select a role" />
                   </SelectTrigger>
                   <SelectContent>
