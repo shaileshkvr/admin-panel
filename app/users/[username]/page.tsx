@@ -1,5 +1,6 @@
 import CardList from "@/components/CardList";
 import EditUser from "@/components/EditUser";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import {
   Breadcrumb,
@@ -167,8 +168,28 @@ const SingleUserPage = () => {
         {/* RIGHT SECTION */}
         <div className="w-full xl:w-2/3 space-y-6">
           {/* User Card Container */}
-          <div className="bg-primary-foreground p-4 rounded-lg">
-            <h1 className="text-lg font-semibold">User Card</h1>
+          <div className="bg-primary-foreground p-4 rounded-lg space-y-2">
+            <div className="flex items-center gap-2">
+              <Avatar>
+                <AvatarImage src="https://avatars.githubusercontent.com/u/126746445?s=400&u=b0faf43c3744f8ee17904beecfe8668864345be0&v=4" />
+                <AvatarFallback>SKV</AvatarFallback>
+              </Avatar>
+              <h1 className="text-xl font-semibold">Shailesh Verma</h1>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              <p>
+                Passionate developer with 5 years of experience in building web
+                applications.
+              </p>
+              <p>
+                Skilled in React, NextJS, Node.js, Fastify, and database
+                management.
+              </p>
+              <p>
+                Enthusiastic about open-source contributions and community
+                engagement.
+              </p>
+            </p>
           </div>
           {/* User Chart Container */}
           <div className="bg-primary-foreground p-4 rounded-lg">
